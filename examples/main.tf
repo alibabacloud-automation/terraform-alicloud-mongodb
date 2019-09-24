@@ -5,7 +5,7 @@ module "mongodb_instance" {
   db_instance_storage = 10
   security_ip_list    = ["10.168.1.12", "100.69.7.112"]
   name                = "my-mongodb"
-  vswitch_id          = "${module.module_vpc.vswitch_ids}"
+  vswitch_id          = module.module_vpc.vswitch_ids
 }
 
 module "module_vpc" {
@@ -19,3 +19,4 @@ module "module_vpc" {
 data "alicloud_zones" "default" {
   available_resource_creation = "MongoDB"
 }
+
