@@ -2,6 +2,11 @@
 #variables for alicloud_mongodb_instance
 ##############################################################
 
+variable "region" {
+  description = "The region used to launch this module resources."
+  default     = ""
+}
+
 variable "engine_version" {
   description = "The engine version to use"
 }
@@ -30,12 +35,12 @@ variable "instance_charge_type" {
 
 variable "period" {
   description = "The duration that you will buy DB instance (in month). It is valid when instance_charge_type is PrePaid. Valid values: [1~9], 12, 24, 36. Default to 1"
-  default=1
+  default     = 1
 }
 
 variable "zone_id" {
   description = "The Zone to launch the DB instance. "
-  default=""
+  default     = ""
 }
 
 variable "vswitch_id" {
@@ -44,7 +49,7 @@ variable "vswitch_id" {
 
 variable "security_ip_list" {
   description = " List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32])."
-  type        = "list"
+  type        = list(string)
   default     = []
 }
 
@@ -57,3 +62,4 @@ variable "replication_factor" {
   description = "Number of replica set nodes. Valid values: [3,5,7]"
   default     = 3
 }
+
