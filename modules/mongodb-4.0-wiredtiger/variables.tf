@@ -25,10 +25,6 @@ variable "skip_region_validation" {
 ##############################################################
 # Mongodb Instance
 ##############################################################
-variable "engine_version" {
-  description = "The version number of the database. Valid value: 3.2, 3.4, 4.0. "
-  default     = ""
-}
 
 variable "db_instance_storage" {
   description = "The storage space of the instance. Valid values: 10 to 3000. Unit: GB. You can only specify this value in 10 GB increments. "
@@ -39,11 +35,6 @@ variable "db_instance_storage" {
 variable "db_instance_class" {
   description = "The specification of the instance. For more information about the value, see https://www.alibabacloud.com/help/doc-detail/57141.htm"
   default     = ""
-}
-
-variable "storage_engine" {
-  description = "The MongoDB storage engine, WiredTiger or RocksDB. Default value: WiredTiger. "
-  default     = "WiredTiger"
 }
 
 variable "name" {
@@ -100,21 +91,4 @@ variable "tags" {
   type        = map(string)
   default     = {}
 }
-variable "existing_instance_id" {
-  description = "The Id of an existing Mongodb instance. If set, the `create` will be ignored. "
-  default     = ""
-}
-variable "create" {
-  description = "Whether to use an existing MongoDB. If false, you can use a existing Mongodb instance by setting `existing_instance_id`. "
-  type        = bool
-  default     = true
-}
 
-#################
-# Depreceted parameters
-#################
-
-variable "instance_id" {
-  description = "`(Deprecated)` It has been deprecated from version 1.2.0 and use `existing_instance_id` instead. "
-  default     = ""
-}
