@@ -1,5 +1,4 @@
-Terraform module which creates MongoDB instance on Alibaba Cloud
-
+Terraform module which creates MongoDB instance on Alibaba Cloud  
 terraform-alicloud-mongodb
 =====================================================================
 
@@ -9,7 +8,7 @@ Terraform module which creates MongoDB replica instance resources on Alibaba Clo
 
 These types of resources are supported:
 
-* [Alicloud_mongodb_instance](https://www.terraform.io/docs/providers/alicloud/r/mongodb_instance.html)
+* [Alicloud mongodb instance](https://www.terraform.io/docs/providers/alicloud/r/mongodb_instance.html)
 
 ----------------------
 
@@ -53,12 +52,12 @@ module "mongodb" {
 
 * [MongoDB example](https://github.com/terraform-alicloud-modules/terraform-alicloud-mongodb/tree/master/examples/mongodb)
 
-## Module
+## Modules
 
-* [mongodb-3.4-rocksdb](https://github.com/terraform-alicloud-mongodb/tree/mongodb/modules/mongodb-3.4-rocksdb)
-* [mongodb-3.4-wiredtiger](https://github.com/terraform-alicloud-mongodb/tree/mongodb/modules/mongodb-3.4-wiredtiger)
-* [mongodb-4.0-wiredtiger](https://github.com/terraform-alicloud-mongodb/tree/mongodb/modules/mongodb-4.0-wiredtiger)
-* [mongodb-4.2-wiredtiger](https://github.com/terraform-alicloud-mongodb/tree/mongodb/modules/mongodb-4.2-wiredtiger)
+* [mongodb-3.4-rocksdb](https://github.com/terraform-alicloud-modules/terraform-alicloud-mongodb/tree/master/modules/mongodb-3.4-rocksdb)
+* [mongodb-3.4-wiredtiger](https://github.com/terraform-alicloud-modules/terraform-alicloud-mongodb/tree/master/modules/mongodb-3.4-wiredtiger)
+* [mongodb-4.0-wiredtiger](https://github.com/terraform-alicloud-modules/terraform-alicloud-mongodb/tree/master/modules/mongodb-4.0-wiredtiger)
+* [mongodb-4.2-wiredtiger](https://github.com/terraform-alicloud-modules/terraform-alicloud-mongodb/tree/master/modules/mongodb-4.2-wiredtiger)
 
 ## Notes
 

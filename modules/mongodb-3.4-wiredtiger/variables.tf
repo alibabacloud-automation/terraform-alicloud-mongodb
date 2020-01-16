@@ -3,16 +3,19 @@
 #################
 variable "profile" {
   description = "The profile name as set in the shared credentials file. If not set, it will be sourced from the ALICLOUD_PROFILE environment variable. "
+  type        = string
   default     = ""
 }
 
 variable "shared_credentials_file" {
   description = "This is the path to the shared credentials file. If this is not set and a profile is specified, $HOME/.aliyun/config.json will be used. "
+  type        = string
   default     = ""
 }
 
 variable "region" {
   description = "The region used to launch this module resources. "
+  type        = string
   default     = ""
 }
 
@@ -34,16 +37,19 @@ variable "db_instance_storage" {
 
 variable "db_instance_class" {
   description = "The specification of the instance. For more information about the value, see https://www.alibabacloud.com/help/doc-detail/57141.htm"
+  type        = string
   default     = ""
 }
 
 variable "name" {
   description = " The name of DB instance. It a string of 2 to 256 characters"
+  type        = string
   default     = ""
 }
 
 variable "instance_charge_type" {
   description = "The billing method of the instance. Valid values are Prepaid, PostPaid, Default to PostPaid"
+  type        = string
   default     = "PostPaid"
 }
 
@@ -54,6 +60,7 @@ variable "period" {
 
 variable "zone_id" {
   description = "The ID of the zone. You can refer to https://www.alibabacloud.com/help/doc-detail/61933.htm. "
+  type        = string
   default     = ""
 }
 
@@ -69,6 +76,7 @@ variable "security_ip_list" {
 
 variable "account_password" {
   description = "Password of the root account. It is a string of 6 to 32 characters and is composed of letters, numbers, and underlines"
+  type        = string
   default     = ""
 }
 
@@ -84,6 +92,7 @@ variable "backup_period" {
 }
 variable "backup_time" {
   description = "MongoDB instance backup time. It is required when backup_period was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to a random time, like `23:00Z-24:00Z`. "
+  type        = string
   default     = "23:00Z-24:00Z"
 }
 variable "tags" {
