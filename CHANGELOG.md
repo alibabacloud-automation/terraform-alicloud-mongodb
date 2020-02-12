@@ -1,4 +1,9 @@
 ## 1.3.0 (Unreleased)
+
+IMPROVEMENTS:
+
+- Add alicloud_cms_alarm resource for mongodb instance,Create a new example to distinguish existing instance [GH-5](https://github.com/terraform-alicloud-modules/terraform-alicloud-mongodb/pull/5)
+
 ## 1.2.0 (January 16, 2020)
 
 IMPROVEMENTS:
