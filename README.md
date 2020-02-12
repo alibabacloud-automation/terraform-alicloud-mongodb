@@ -9,26 +9,29 @@ Terraform module which creates MongoDB replica instance resources on Alibaba Clo
 These types of resources are supported:
 
 * [Alicloud mongodb instance](https://www.terraform.io/docs/providers/alicloud/r/mongodb_instance.html)
+* [Alicloud_cms_alarm](https://www.terraform.io/docs/providers/alicloud/r/cms_alarm.html)
 
 ----------------------
 
 ## Terraform versions
 
-This module requires Terraform 0.12.
+This module requires Terraform 0.12 and Terraform Provider Alicloud 1.56.0+.
 
 ## Usage
 -----
-You can use this in your terraform template with the following steps.
 
-1. Adding a module resource to your template, e.g. main.tf
+For new instance
 
 ```hcl
 module "mongodb" {
   source               = "terraform-alicloud-modules/mongodb/alicloud"
   region               = "cn-shanghai"
+
   #################
   # MongoDB Instance
   #################
+  engine_version       = "3.4"
+  storage_engine       = "RocksDB"
   replication_factor   = 3
   name                 = "my-mongo"
   instance_charge_type = "PostPaid"
@@ -45,12 +48,51 @@ module "mongodb" {
     Env      = "Private"
     Location = "Secret"
   }
+
+  #############
+  # cms_alarm
+  #############
+  alarm_rule_name            = "CmsAlarmForMongodb"
+  alarm_rule_statistics      = "Average"
+  alarm_rule_period          = 300
+  alarm_rule_operator        = "<="
+  alarm_rule_threshold       = 35
+  alarm_rule_triggered_count = 2
+  alarm_rule_contact_groups  = ["Mongodb", "AccCms"]
+}
+```
+
+For existing instance
+
+```hcl
+module "mongodb_example" {
+  source               = "terraform-alicloud-modules/mongodb/alicloud"
+  region               = "cn-shanghai"
+
+  ###################
+  # Mongodb Instance
+  ###################
+  existing_instance_id = "dds-uf694de619xxxxx"
+
+  #############
+  # cms_alarm
+  #############
+  alarm_rule_name            = "CmsAlarmForMongodb"
+  alarm_rule_statistics      = "Average"
+  alarm_rule_period          = 300
+  alarm_rule_operator        = "<="
+  alarm_rule_threshold       = 35
+  alarm_rule_triggered_count = 2
+  alarm_rule_contact_groups  = ["AccCms"]
+  enable_alarm_rule          = true
 }
 ```
 
 ## Examples
 
-* [MongoDB example](https://github.com/terraform-alicloud-modules/terraform-alicloud-mongodb/tree/master/examples/mongodb)
+* [complete](https://github.com/terraform-alicloud-modules/terraform-alicloud-mongodb/tree/master/examples/complete)
+* [using-existing-mongodb-instance](https://github.com/terraform-alicloud-modules/terraform-alicloud-mongodb/tree/master/examples/using-existing-mongocb-instance)
+* [using-submodule-complete](https://github.com/terraform-alicloud-modules/terraform-alicloud-mongodb/tree/master/examples/using-submodule-complete)
 
 ## Modules
 
@@ -67,7 +109,7 @@ If you have not set them yet, please install [aliyun-cli](https://github.com/ali
 
 Authors
 ---------
-Created and maintained by Yi Jincheng(yi785301535@163.com)
+Created and maintained by Yi Jincheng(yi785301535@163.com) and He Guimin(@xiaozhu36, heguimin36@163.com)
 
 License
 ----

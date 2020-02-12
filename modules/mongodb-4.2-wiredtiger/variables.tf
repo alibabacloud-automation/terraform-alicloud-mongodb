@@ -25,9 +25,9 @@ variable "skip_region_validation" {
   default     = false
 }
 
-##############################################################
+####################
 # Mongodb Instance
-##############################################################
+####################
 
 variable "db_instance_storage" {
   description = "The storage space of the instance. Valid values: 10 to 3000. Unit: GB. You can only specify this value in 10 GB increments. "
@@ -66,6 +66,8 @@ variable "zone_id" {
 
 variable "vswitch_id" {
   description = "The virtual switch ID to launch DB instances in one VPC. "
+  type        = string
+  default     = ""
 }
 
 variable "security_ip_list" {
@@ -85,19 +87,87 @@ variable "replication_factor" {
   type        = number
   default     = 3
 }
+
 variable "backup_period" {
   description = "MongoDB Instance backup period. It is required when backup_time was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. "
   type        = list(string)
   default     = []
 }
+
 variable "backup_time" {
-  description = "MongoDB instance backup time. It is required when backup_period was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to a random time, like `23:00Z-24:00Z`. "
+  description = "MongoDB instance backup time. It is required when backup_period was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to a random time, like '23:00Z-24:00Z'. "
   type        = string
   default     = "23:00Z-24:00Z"
 }
+
 variable "tags" {
   description = "A mapping of tags to assign to the mongodb instance resource. "
   type        = map(string)
   default     = {}
+}
+
+
+#############
+# cms_alarm
+#############
+
+variable "alarm_rule_name" {
+  description = "The alarm rule name. "
+  type        = string
+  default     = ""
+}
+
+variable "alarm_rule_period" {
+  description = "Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds. "
+  type        = number
+  default     = 300
+}
+
+variable "alarm_rule_statistics" {
+  description = "Statistical method. It must be consistent with that defined for metrics. Valid values: ['Average', 'Minimum', 'Maximum']. Default to 'Average'. "
+  type        = string
+  default     = "Average"
+}
+
+variable "alarm_rule_operator" {
+  description = "Alarm comparison operator. Valid values: ['<=', '<', '>', '>=', '==', '!=']. Default to '=='. "
+  type        = string
+  default     = "=="
+}
+
+variable "alarm_rule_threshold" {
+  description = "Alarm threshold value, which must be a numeric value currently. "
+  type        = string
+  default     = ""
+}
+
+variable "alarm_rule_triggered_count" {
+  description = "Number of consecutive times it has been detected that the values exceed the threshold. Default to 3. "
+  type        = number
+  default     = 3
+}
+
+variable "alarm_rule_contact_groups" {
+  description = "List contact groups of the alarm rule, which must have been created on the console. "
+  type        = list(string)
+  default     = []
+}
+
+variable "alarm_rule_silence_time" {
+  description = "Notification silence period in the alarm state, in seconds. Valid value range: [300, 86400]. Default to 86400. "
+  type        = number
+  default     = 86400
+}
+
+variable "alarm_rule_effective_interval" {
+  description = "The interval of effecting alarm rule. It foramt as 'hh:mm-hh:mm', like '0:00-4:00'."
+  type        = string
+  default     = "0:00-2:00"
+}
+
+variable "enable_alarm_rule" {
+  description = "Whether to enable alarm rule. Default to true. "
+  type        = bool
+  default     = true
 }
 

@@ -18,8 +18,12 @@ resource "alicloud_vswitch" "this" {
   cidr_block        = cidrsubnet(data.alicloud_vpcs.default.vpcs.0.cidr_block, 4, 4)
 }
 module "mongodb_example" {
-  source               = "../../modules/mongodb-3.4-rocksdb"
-  region               = var.region
+  source = "../../modules/mongodb-3.4-rocksdb"
+  region = var.region
+
+  ###################
+  # Mongodb instance
+  ###################
   replication_factor   = 3
   name                 = "my-mongo"
   instance_charge_type = "PostPaid"
@@ -36,4 +40,15 @@ module "mongodb_example" {
     Env      = "Private"
     Location = "Secret"
   }
+
+  #############
+  # cms_alarm
+  #############
+  alarm_rule_name            = "CmsAlarmForMongodb"
+  alarm_rule_statistics      = "Average"
+  alarm_rule_period          = 300
+  alarm_rule_operator        = "<="
+  alarm_rule_threshold       = 35
+  alarm_rule_triggered_count = 2
+  alarm_rule_contact_groups  = ["Mongodb", "AccCms"]
 }
