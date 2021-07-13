@@ -40,11 +40,34 @@ resource "alicloud_cms_alarm" "cpu_utilization" {
     instanceId = local.this_instance_id
     device     = "/dev/vda1,/dev/vdb1"
   }
-  statistics         = var.alarm_rule_statistics
+  dynamic "escalations_critical" {
+    for_each = var.alarm_escalation_level == "critical" ? [{}] : []
+    content {
+      statistics          = var.alarm_rule_statistics
+      comparison_operator = var.alarm_rule_comparison_operator
+      threshold           = var.alarm_rule_threshold
+      times               = var.alarm_rule_times
+    }
+  }
+  dynamic "escalations_warn" {
+    for_each = var.alarm_escalation_level == "warn" ? [{}] : []
+    content {
+      statistics          = var.alarm_rule_statistics
+      comparison_operator = var.alarm_rule_comparison_operator
+      threshold           = var.alarm_rule_threshold
+      times               = var.alarm_rule_times
+    }
+  }
+  dynamic "escalations_info" {
+    for_each = var.alarm_escalation_level == "info" ? [{}] : []
+    content {
+      statistics          = var.alarm_rule_statistics
+      comparison_operator = var.alarm_rule_comparison_operator
+      threshold           = var.alarm_rule_threshold
+      times               = var.alarm_rule_times
+    }
+  }
   period             = var.alarm_rule_period
-  operator           = var.alarm_rule_operator
-  threshold          = var.alarm_rule_threshold
-  triggered_count    = var.alarm_rule_triggered_count
   contact_groups     = var.alarm_rule_contact_groups
   silence_time       = var.alarm_rule_silence_time
   effective_interval = var.alarm_rule_effective_interval
@@ -59,11 +82,34 @@ resource "alicloud_cms_alarm" "memory_utilization" {
     instanceId = local.this_instance_id
     device     = "/dev/vda1,/dev/vdb1"
   }
-  statistics         = var.alarm_rule_statistics
+  dynamic "escalations_critical" {
+    for_each = var.alarm_escalation_level == "critical" ? [{}] : []
+    content {
+      statistics          = var.alarm_rule_statistics
+      comparison_operator = var.alarm_rule_comparison_operator
+      threshold           = var.alarm_rule_threshold
+      times               = var.alarm_rule_times
+    }
+  }
+  dynamic "escalations_warn" {
+    for_each = var.alarm_escalation_level == "warn" ? [{}] : []
+    content {
+      statistics          = var.alarm_rule_statistics
+      comparison_operator = var.alarm_rule_comparison_operator
+      threshold           = var.alarm_rule_threshold
+      times               = var.alarm_rule_times
+    }
+  }
+  dynamic "escalations_info" {
+    for_each = var.alarm_escalation_level == "info" ? [{}] : []
+    content {
+      statistics          = var.alarm_rule_statistics
+      comparison_operator = var.alarm_rule_comparison_operator
+      threshold           = var.alarm_rule_threshold
+      times               = var.alarm_rule_times
+    }
+  }
   period             = var.alarm_rule_period
-  operator           = var.alarm_rule_operator
-  threshold          = var.alarm_rule_threshold
-  triggered_count    = var.alarm_rule_triggered_count
   contact_groups     = var.alarm_rule_contact_groups
   silence_time       = var.alarm_rule_silence_time
   effective_interval = var.alarm_rule_effective_interval
@@ -78,11 +124,34 @@ resource "alicloud_cms_alarm" "disk_utilization" {
     instanceId = local.this_instance_id
     device     = "/dev/vda1,/dev/vdb1"
   }
-  statistics         = var.alarm_rule_statistics
+  dynamic "escalations_critical" {
+    for_each = var.alarm_escalation_level == "critical" ? [{}] : []
+    content {
+      statistics          = var.alarm_rule_statistics
+      comparison_operator = var.alarm_rule_comparison_operator
+      threshold           = var.alarm_rule_threshold
+      times               = var.alarm_rule_times
+    }
+  }
+  dynamic "escalations_warn" {
+    for_each = var.alarm_escalation_level == "warn" ? [{}] : []
+    content {
+      statistics          = var.alarm_rule_statistics
+      comparison_operator = var.alarm_rule_comparison_operator
+      threshold           = var.alarm_rule_threshold
+      times               = var.alarm_rule_times
+    }
+  }
+  dynamic "escalations_info" {
+    for_each = var.alarm_escalation_level == "info" ? [{}] : []
+    content {
+      statistics          = var.alarm_rule_statistics
+      comparison_operator = var.alarm_rule_comparison_operator
+      threshold           = var.alarm_rule_threshold
+      times               = var.alarm_rule_times
+    }
+  }
   period             = var.alarm_rule_period
-  operator           = var.alarm_rule_operator
-  threshold          = var.alarm_rule_threshold
-  triggered_count    = var.alarm_rule_triggered_count
   contact_groups     = var.alarm_rule_contact_groups
   silence_time       = var.alarm_rule_silence_time
   effective_interval = var.alarm_rule_effective_interval
@@ -97,11 +166,34 @@ resource "alicloud_cms_alarm" "intranet_in" {
     instanceId = local.this_instance_id
     device     = "/dev/vda1,/dev/vdb1"
   }
-  statistics         = var.alarm_rule_statistics
+  dynamic "escalations_critical" {
+    for_each = var.alarm_escalation_level == "critical" ? [{}] : []
+    content {
+      statistics          = var.alarm_rule_statistics
+      comparison_operator = var.alarm_rule_comparison_operator
+      threshold           = var.alarm_rule_threshold
+      times               = var.alarm_rule_times
+    }
+  }
+  dynamic "escalations_warn" {
+    for_each = var.alarm_escalation_level == "warn" ? [{}] : []
+    content {
+      statistics          = var.alarm_rule_statistics
+      comparison_operator = var.alarm_rule_comparison_operator
+      threshold           = var.alarm_rule_threshold
+      times               = var.alarm_rule_times
+    }
+  }
+  dynamic "escalations_info" {
+    for_each = var.alarm_escalation_level == "info" ? [{}] : []
+    content {
+      statistics          = var.alarm_rule_statistics
+      comparison_operator = var.alarm_rule_comparison_operator
+      threshold           = var.alarm_rule_threshold
+      times               = var.alarm_rule_times
+    }
+  }
   period             = var.alarm_rule_period
-  operator           = var.alarm_rule_operator
-  threshold          = var.alarm_rule_threshold
-  triggered_count    = var.alarm_rule_triggered_count
   contact_groups     = var.alarm_rule_contact_groups
   silence_time       = var.alarm_rule_silence_time
   effective_interval = var.alarm_rule_effective_interval
@@ -116,11 +208,34 @@ resource "alicloud_cms_alarm" "intranet_out" {
     instanceId = local.this_instance_id
     device     = "/dev/vda1,/dev/vdb1"
   }
-  statistics         = var.alarm_rule_statistics
+  dynamic "escalations_critical" {
+    for_each = var.alarm_escalation_level == "critical" ? [{}] : []
+    content {
+      statistics          = var.alarm_rule_statistics
+      comparison_operator = var.alarm_rule_comparison_operator
+      threshold           = var.alarm_rule_threshold
+      times               = var.alarm_rule_times
+    }
+  }
+  dynamic "escalations_warn" {
+    for_each = var.alarm_escalation_level == "warn" ? [{}] : []
+    content {
+      statistics          = var.alarm_rule_statistics
+      comparison_operator = var.alarm_rule_comparison_operator
+      threshold           = var.alarm_rule_threshold
+      times               = var.alarm_rule_times
+    }
+  }
+  dynamic "escalations_info" {
+    for_each = var.alarm_escalation_level == "info" ? [{}] : []
+    content {
+      statistics          = var.alarm_rule_statistics
+      comparison_operator = var.alarm_rule_comparison_operator
+      threshold           = var.alarm_rule_threshold
+      times               = var.alarm_rule_times
+    }
+  }
   period             = var.alarm_rule_period
-  operator           = var.alarm_rule_operator
-  threshold          = var.alarm_rule_threshold
-  triggered_count    = var.alarm_rule_triggered_count
   contact_groups     = var.alarm_rule_contact_groups
   silence_time       = var.alarm_rule_silence_time
   effective_interval = var.alarm_rule_effective_interval
