@@ -34,6 +34,12 @@ variable "enable_alarm_rule" {
   default     = true
 }
 
+variable "alarm_escalation_level" {
+  description = "Whether alarm level is 'critical', 'warn', or 'info'. Default is 'critical'."
+  type        = string
+  default     = "critical"
+}
+
 variable "alarm_rule_name" {
   description = "The alarm rule name. "
   type        = string
@@ -52,7 +58,7 @@ variable "alarm_rule_statistics" {
   default     = "Average"
 }
 
-variable "alarm_rule_operator" {
+variable "alarm_rule_comparison_operator" {
   description = "Alarm comparison operator. Valid values: ['<=', '<', '>', '>=', '==', '!=']. Default to '=='. "
   type        = string
   default     = "=="
@@ -64,7 +70,7 @@ variable "alarm_rule_threshold" {
   default     = ""
 }
 
-variable "alarm_rule_triggered_count" {
+variable "alarm_rule_times" {
   description = "Number of consecutive times it has been detected that the values exceed the threshold. Default to 3. "
   type        = number
   default     = 3
