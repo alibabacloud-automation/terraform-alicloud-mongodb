@@ -162,7 +162,7 @@ module "mongodb" {
 
 作者
 -------
-Created and maintained by Yi Jincheng(yi785301535@163.com) and He Guimin(@xiaozhu36, heguimin36@163.com)
+Created and maintained by Alibaba Cloud Terraform Team(terraform@alibabacloud.com)
 
 许可
 ----
