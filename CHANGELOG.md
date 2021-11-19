@@ -1,4 +1,11 @@
-## 1.4.0 (Unreleased)
+## 1.5.0 (Unreleased)
+## 1.4.0 (November 19, 2021)
+
+IMPROVEMENTS:
+
+- Removes the provider setting and improves the Readme [GH-8](https://github.com/terraform-alicloud-modules/terraform-alicloud-mongodb/pull/8)
+- Modified author contact information [GH-7](https://github.com/terraform-alicloud-modules/terraform-alicloud-mongodb/pull/7)
+
 ## 1.3.0 (February 11, 2020)
 
 IMPROVEMENTS:
