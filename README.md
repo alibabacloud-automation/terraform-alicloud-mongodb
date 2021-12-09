@@ -163,7 +163,7 @@ More details see [How to use provider in the module](https://www.terraform.io/do
 
 Authors
 ---------
-Created and maintained by Yi Jincheng(yi785301535@163.com) and He Guimin(@xiaozhu36, heguimin36@163.com)
+Created and maintained by Alibaba Cloud Terraform Team(terraform@alibabacloud.com)
 
 License
 ----
