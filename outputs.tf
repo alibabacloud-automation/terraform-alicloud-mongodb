@@ -44,7 +44,7 @@ output "this_mongodb_instance_vswitch_id" {
 
 output "this_mongodb_instance_tags" {
   description = "A mapping of tags to assign to the MongoDB instance resource. "
-  value       = alicloud_mongodb_instance.this.*.tags
+  value       = concat(alicloud_mongodb_instance.this.*.tags, [""])[0]
 }
 
 output "this_mongodb_instance_storage" {
@@ -69,7 +69,7 @@ output "this_mongodb_instance_name" {
 
 output "this_mongodb_instance_security_ip_list" {
   description = "IP whitelist of MongoDB instances. "
-  value       = alicloud_mongodb_instance.this.*.security_ip_list
+  value       = concat(alicloud_mongodb_instance.this.*.security_ip_list, [""])[0]
 }
 
 output "this_mongodb_instance_replication_factor" {
@@ -79,7 +79,7 @@ output "this_mongodb_instance_replication_factor" {
 
 output "this_mongodb_instance_backup_period" {
   description = "The MongoDB instance backup period. "
-  value       = alicloud_mongodb_instance.this.*.backup_period
+  value       = concat(alicloud_mongodb_instance.this.*.backup_period, [""])[0]
 }
 
 output "this_mongodb_instance_backup_time" {
@@ -117,7 +117,7 @@ output "this_alarm_rule_metric" {
 
 output "this_alarm_rule_dimensions" {
   description = "Map of the resources associated with the alarm rule. "
-  value       = alicloud_cms_alarm.cpu_utilization.*.dimensions
+  value       = concat(alicloud_cms_alarm.cpu_utilization.*.dimensions, [""])[0]
 }
 
 output "this_alarm_rule_period" {
@@ -219,5 +219,5 @@ output "this_db_instance_vswitch_id" {
 
 output "this_db_instance_security_ip_list" {
   description = "`(Deprecated)` It has been deprecated from version 1.2.0 and use `this_mongodb_instance_security_ip_list` instead. "
-  value       = alicloud_mongodb_instance.this.*.security_ip_list
+  value       = concat(alicloud_mongodb_instance.this.*.security_ip_list, [""])[0]
 }

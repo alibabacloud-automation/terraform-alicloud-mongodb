@@ -25,94 +25,28 @@ variable "skip_region_validation" {
   default     = false
 }
 
-#############
-# cms_alarm
-#############
-variable "enable_alarm_rule" {
-  description = "Whether to enable alarm rule. Default to true. "
-  type        = bool
-  default     = true
-}
-
-variable "alarm_rule_name" {
-  description = "The alarm rule name. "
+#################
+# Depreceted parameters
+#################
+variable "instance_id" {
+  description = "`(Deprecated)` It has been deprecated from version 1.2.0 and use `existing_instance_id` instead. "
   type        = string
   default     = ""
-}
-
-variable "alarm_rule_period" {
-  description = "Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds. "
-  type        = number
-  default     = 300
-}
-
-variable "alarm_rule_statistics" {
-  description = "Statistical method. It must be consistent with that defined for metrics. Valid values: ['Average', 'Minimum', 'Maximum']. Default to 'Average'. "
-  type        = string
-  default     = "Average"
-}
-
-variable "alarm_rule_operator" {
-  description = "Alarm comparison operator. Valid values: ['<=', '<', '>', '>=', '==', '!=']. Default to '=='. "
-  type        = string
-  default     = "=="
-}
-
-variable "alarm_rule_threshold" {
-  description = "Alarm threshold value, which must be a numeric value currently. "
-  type        = string
-  default     = ""
-}
-
-variable "alarm_rule_triggered_count" {
-  description = "Number of consecutive times it has been detected that the values exceed the threshold. Default to 3. "
-  type        = number
-  default     = 3
-}
-
-variable "alarm_rule_contact_groups" {
-  description = "List contact groups of the alarm rule, which must have been created on the console. "
-  type        = list(string)
-  default     = []
-}
-
-variable "alarm_rule_silence_time" {
-  description = "Notification silence period in the alarm state, in seconds. Valid value range: [300, 86400]. Default to 86400. "
-  type        = number
-  default     = 86400
-}
-
-variable "alarm_rule_effective_interval" {
-  description = "The interval of effecting alarm rule. It foramt as 'hh:mm-hh:mm', like '0:00-4:00'."
-  type        = string
-  default     = "0:00-2:00"
 }
 
 ##############################################################
 # Mongodb Instance
 ##############################################################
-variable "engine_version" {
-  description = "The version number of the database. Valid value: 3.2, 3.4, 4.0. "
+variable "create" {
+  description = "Whether to use an existing MongoDB. If false, you can use a existing Mongodb instance by setting `existing_instance_id`. "
+  type        = bool
+  default     = true
+}
+
+variable "existing_instance_id" {
+  description = "The Id of an existing Mongodb instance. It will be ignored when the 'create = true'. "
   type        = string
   default     = ""
-}
-
-variable "db_instance_storage" {
-  description = "The storage space of the instance. Valid values: 10 to 3000. Unit: GB. You can only specify this value in 10 GB increments. "
-  type        = number
-  default     = 10
-}
-
-variable "db_instance_class" {
-  description = "The specification of the instance. For more information about the value, see https://www.alibabacloud.com/help/doc-detail/57141.htm"
-  type        = string
-  default     = ""
-}
-
-variable "storage_engine" {
-  description = "The MongoDB storage engine, WiredTiger or RocksDB. Default value: WiredTiger. "
-  type        = string
-  default     = "WiredTiger"
 }
 
 variable "name" {
@@ -121,27 +55,34 @@ variable "name" {
   default     = ""
 }
 
+variable "engine_version" {
+  description = "The version number of the database. Valid value: 3.4, 4.0, 4.2, 4.4, 5.0. "
+  type        = string
+  default     = "3.4"
+}
+
 variable "instance_charge_type" {
   description = "The billing method of the instance. Valid values are Prepaid, PostPaid, Default to PostPaid"
   type        = string
   default     = "PostPaid"
 }
 
+variable "db_instance_class" {
+  description = "The specification of the instance. For more information about the value, see https://www.alibabacloud.com/help/doc-detail/57141.htm"
+  type        = string
+  default     = "dds.mongo.mid"
+}
+
+variable "db_instance_storage" {
+  description = "The storage space of the instance. Valid values: 10 to 3000. Unit: GB. You can only specify this value in 10 GB increments. "
+  type        = number
+  default     = 10
+}
+
 variable "period" {
   description = "The duration that you will buy DB instance (in month). It is valid when instance_charge_type is PrePaid. Valid values: [1~9], 12, 24, 36. Default to 1"
+  type        = number
   default     = 1
-}
-
-variable "zone_id" {
-  description = "The ID of the zone. You can refer to https://www.alibabacloud.com/help/doc-detail/61933.htm. "
-  type        = string
-  default     = ""
-}
-
-variable "vswitch_id" {
-  description = "The virtual switch ID to launch DB instances in one VPC. "
-  type        = string
-  default     = ""
 }
 
 variable "security_ip_list" {
@@ -150,16 +91,34 @@ variable "security_ip_list" {
   default     = []
 }
 
-variable "account_password" {
-  description = "Password of the root account. It is a string of 6 to 32 characters and is composed of letters, numbers, and underlines"
-  type        = string
-  default     = ""
-}
-
 variable "replication_factor" {
   description = "The number of nodes in the replica set instance. Valid values: 3, 5, 7. Default value: 3. "
   type        = number
   default     = 3
+}
+
+variable "storage_engine" {
+  description = "The MongoDB storage engine, WiredTiger or RocksDB. Default value: WiredTiger. "
+  type        = string
+  default     = "WiredTiger"
+}
+
+variable "vswitch_id" {
+  description = "The virtual switch ID to launch DB instances in one VPC. "
+  type        = string
+  default     = ""
+}
+
+variable "zone_id" {
+  description = "The ID of the zone. You can refer to https://www.alibabacloud.com/help/doc-detail/61933.htm. "
+  type        = string
+  default     = ""
+}
+
+variable "account_password" {
+  description = "Password of the root account. It is a string of 6 to 32 characters and is composed of letters, numbers, and underlines"
+  type        = string
+  default     = ""
 }
 
 variable "backup_period" {
@@ -180,24 +139,65 @@ variable "tags" {
   default     = {}
 }
 
-variable "existing_instance_id" {
-  description = "The Id of an existing Mongodb instance. If set, the `create` will be ignored. "
-  type        = string
-  default     = ""
-}
-
-variable "create" {
-  description = "Whether to use an existing MongoDB. If false, you can use a existing Mongodb instance by setting `existing_instance_id`. "
+#############
+# cms_alarm
+#############
+variable "enable_alarm_rule" {
+  description = "Whether to enable alarm rule. Default to true. "
   type        = bool
   default     = true
 }
 
-#################
-# Depreceted parameters
-#################
-
-variable "instance_id" {
-  description = "`(Deprecated)` It has been deprecated from version 1.2.0 and use `existing_instance_id` instead. "
+variable "alarm_rule_name" {
+  description = "The alarm rule name. "
   type        = string
   default     = ""
+}
+
+variable "alarm_rule_statistics" {
+  description = "Statistical method. It must be consistent with that defined for metrics. Valid values: ['Average', 'Minimum', 'Maximum']. Default to 'Average'. "
+  type        = string
+  default     = "Average"
+}
+
+variable "alarm_rule_operator" {
+  description = "Alarm comparison operator. Valid values: ['<=', '<', '>', '>=', '==', '!=']. Default to '=='. "
+  type        = string
+  default     = ">="
+}
+
+variable "alarm_rule_threshold" {
+  description = "Alarm threshold value, which must be a numeric value currently. "
+  type        = string
+  default     = ""
+}
+
+variable "alarm_rule_triggered_count" {
+  description = "Number of consecutive times it has been detected that the values exceed the threshold. Default to 3. "
+  type        = number
+  default     = 3
+}
+
+variable "alarm_rule_period" {
+  description = "Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds. "
+  type        = number
+  default     = 300
+}
+
+variable "alarm_rule_contact_groups" {
+  description = "List contact groups of the alarm rule, which must have been created on the console. "
+  type        = list(string)
+  default     = []
+}
+
+variable "alarm_rule_silence_time" {
+  description = "Notification silence period in the alarm state, in seconds. Valid value range: [300, 86400]. Default to 86400. "
+  type        = number
+  default     = 86400
+}
+
+variable "alarm_rule_effective_interval" {
+  description = "The interval of effecting alarm rule. It foramt as 'hh:mm-hh:mm', like '0:00-4:00'."
+  type        = string
+  default     = "0:00-2:00"
 }

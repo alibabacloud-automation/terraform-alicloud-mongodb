@@ -1,12 +1,24 @@
-#  Local .terraform directories
-**/.terraform/*
-
-# .tfstate files
+# Compiled files
 *.tfstate
-*.tfstate.*
+*.tfstate.backup
+*.terraform.*
 
-# .tfvars files
-*.tfvars
-.idea*
+# Module directory
+.terraform/
+
+# terraform log
 *.log
-*.tfstate.*
+
+# auto-generated key pair file
+*.pem
+
+# tools files
+.DS_Store
+.idea
+
+# others
+*.bak
+*.bk
+**/.terraform/*
+.terraform.lock.hcl
+.terraform.tfstate.lock.info
