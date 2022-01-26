@@ -15,6 +15,7 @@ These types of resources are supported:
 
 
 ## Usage
+
 -----
 
 For new instance
@@ -160,6 +161,13 @@ module "mongodb" {
 and then run `terraform init` and `terraform apply` to make the defined provider effect to the existing module state.
 
 More details see [How to use provider in the module](https://www.terraform.io/docs/language/modules/develop/providers.html#passing-providers-explicitly)
+
+## Requirements
+
+| Name | Version |
+|------|---------|
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | > = 0.13.0 |
+| <a name="requirement_alicloud"></a> [alicloud](#requirement\_alicloud) | > = 1.56.0 |
 
 Authors
 ---------

@@ -2,25 +2,25 @@
 # Provider
 #################
 variable "profile" {
-  description = "The profile name as set in the shared credentials file. If not set, it will be sourced from the ALICLOUD_PROFILE environment variable. "
+  description = "(Deprecated from version 1.5.0) The profile name as set in the shared credentials file. If not set, it will be sourced from the ALICLOUD_PROFILE environment variable. "
   type        = string
   default     = ""
 }
 
 variable "shared_credentials_file" {
-  description = "This is the path to the shared credentials file. If this is not set and a profile is specified, $HOME/.aliyun/config.json will be used. "
+  description = "(Deprecated from version 1.5.0) This is the path to the shared credentials file. If this is not set and a profile is specified, $HOME/.aliyun/config.json will be used. "
   type        = string
   default     = ""
 }
 
 variable "region" {
-  description = "The region used to launch this module resources. "
+  description = "(Deprecated from version 1.5.0) The region used to launch this module resources. "
   type        = string
   default     = ""
 }
 
 variable "skip_region_validation" {
-  description = "Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet). "
+  description = "(Deprecated from version 1.5.0) Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet). "
   type        = bool
   default     = false
 }
@@ -28,7 +28,6 @@ variable "skip_region_validation" {
 ####################
 # Mongodb Instance
 ####################
-
 variable "db_instance_storage" {
   description = "The storage space of the instance. Valid values: 10 to 3000. Unit: GB. You can only specify this value in 10 GB increments. "
   type        = number
@@ -106,11 +105,9 @@ variable "tags" {
   default     = {}
 }
 
-
 #############
 # cms_alarm
 #############
-
 variable "alarm_rule_name" {
   description = "The alarm rule name. "
   type        = string
@@ -170,4 +167,3 @@ variable "enable_alarm_rule" {
   type        = bool
   default     = true
 }
-

@@ -4,7 +4,6 @@ locals {
 }
 module "mongodb" {
   source = "../../"
-  region = var.region
 
   ###################
   # Mongodb Instance
@@ -45,4 +44,3 @@ module "mongodb" {
   alarm_rule_triggered_count    = var.alarm_rule_triggered_count
   alarm_rule_contact_groups     = var.alarm_rule_contact_groups
 }
-
