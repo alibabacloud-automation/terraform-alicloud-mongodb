@@ -12,10 +12,10 @@ data "alicloud_zones" "default" {
   multi                       = true
 }
 resource "alicloud_vswitch" "this" {
-  name              = "mongodb_vpc"
-  availability_zone = data.alicloud_zones.default.zones.0.multi_zone_ids.0
-  vpc_id            = data.alicloud_vpcs.default.vpcs.0.id
-  cidr_block        = cidrsubnet(data.alicloud_vpcs.default.vpcs.0.cidr_block, 4, 4)
+  vswitch_name = "mongodb_vpc"
+  zone_id      = data.alicloud_zones.default.zones.0.multi_zone_ids.0
+  vpc_id       = data.alicloud_vpcs.default.vpcs.0.id
+  cidr_block   = cidrsubnet(data.alicloud_vpcs.default.vpcs.0.cidr_block, 4, 4)
 }
 module "mongodb_example" {
   source = "../../modules/mongodb-3.4-rocksdb"
