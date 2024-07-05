@@ -154,11 +154,6 @@ output "this_alarm_rule_enabled" {
   value       = module.mongodb_example.this_alarm_rule_enabled
 }
 
-output "this_alarm_rule_webhook" {
-  description = "The webhook that is called when the alarm is triggered. "
-  value       = module.mongodb_example.this_alarm_rule_webhook
-}
-
 output "this_alarm_rule_cpu_utilization_status" {
   description = "The current alarm cpu utilization rule status. "
   value       = module.mongodb_example.this_alarm_rule_cpu_utilization_status

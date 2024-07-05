@@ -1,7 +1,6 @@
 locals {
-  this_instance_id      = var.create ? concat(alicloud_mongodb_instance.this.*.id, [""])[0] : var.existing_instance_id
-  create_more_resources = var.existing_instance_id != "" || var.create ? true : false
-  project               = "acs_mongodb"
+  this_instance_id = var.create ? concat(alicloud_mongodb_instance.this[*].id, [""])[0] : var.existing_instance_id
+  project          = "acs_mongodb"
 }
 
 resource "alicloud_mongodb_instance" "this" {

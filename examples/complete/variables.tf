@@ -16,7 +16,7 @@ variable "instance_charge_type" {
 variable "db_instance_class" {
   description = "The specification of the instance. For more information about the value, see https://www.alibabacloud.com/help/doc-detail/57141.htm"
   type        = string
-  default     = "dds.mongo.mid"
+  default     = "mdb.shard.2x.xlarge.d"
 }
 
 variable "db_instance_storage" {
@@ -52,13 +52,13 @@ variable "account_password" {
 variable "backup_period" {
   description = "MongoDB Instance backup period. It is required when backup_time was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. "
   type        = list(string)
-  default     = ["Monday"]
+  default     = null
 }
 
 variable "backup_time" {
   description = "MongoDB instance backup time. It is required when backup_period was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to a random time, like '23:00Z-24:00Z'. "
   type        = string
-  default     = "23:00Z-24:00Z"
+  default     = null
 }
 
 variable "tags" {
