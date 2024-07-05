@@ -1,3 +1,7 @@
+# Deprecated
+
+This submodule is deprecated because of the [End of sale for MongoDB 3.4 instances](https://www.alibabacloud.com/help/en/mongodb/product-overview/notice-end-of-sale-for-mongodb-3-4-instances-20230101)
+
 # Alibaba Cloud MongoDB-3.4-WiredTiger Terraform Module
 
 Configuration in this directory creates set of MongoDB resources instance
