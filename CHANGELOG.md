@@ -1,4 +1,8 @@
-## 1.5.0 (Unreleased)
+## 2.1.0 (Unreleased)
+## 2.0.0 (November 21, 2024)
+
+- Module: remove deprecated attributes; Examples: improve the examples [GH-13](https://github.com/alibabacloud-automation/terraform-alicloud-mongodb/pull/13)
+
 ## 1.4.0 (November 19, 2021)
 
 IMPROVEMENTS:
